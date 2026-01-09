@@ -51,7 +51,7 @@
     <script type="text/javascript">
         function initEmbeddedMessaging() {
             try {
-                 embeddedservice_bootstrap.settings.language = "pt_BR";
+                embeddedservice_bootstrap.settings.language = "pt_BR";
                 embeddedservice_bootstrap.settings.displayHelpButton = false;
                 embeddedservice_bootstrap.settings.hideChatButtonOnLoad = true;
                 embeddedservice_bootstrap.settings.chatButtonPosition = "-50000px,-50000px";
@@ -63,6 +63,8 @@
                         scrt2URL: 'https://multilixo--dev.sandbox.my.salesforce-scrt.com'
                     }
                 );
+
+                console.log(window.embeddedservice_bootstrap);
             } catch (err) {
                 console.error(err);
             }
