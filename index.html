@@ -39,10 +39,13 @@
         }
     </style>
 
-    <button class="chat-launcher-custom" onclick="iniciarChat()">
-         <span class="chat-launcher-icon">✦</span>
-        Atendimento  – Grupo Multilixo
-    </button>
+    <!-- Componente de botão de chat personalizado -->
+    <div class="botao-chat-container">
+        <div id="chatBalloon" class="chat-balloon">Como posso ajudar?</div>
+        <button id="botaoChat" class="botao-chat" onclick="iniciarChat()">
+            Atendente Teste
+        </button>
+    </div>
 
     <script type="text/javascript">
         function initEmbeddedMessaging() {
