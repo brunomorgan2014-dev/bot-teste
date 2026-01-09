@@ -71,23 +71,7 @@
             }
         }
     
-        function iniciarChat() {
-            const balao = document.getElementById("chatBalloon");
-            if (balao) balao.classList.add("hidden");
-    
-            if (!window.embeddedservice_bootstrap || !embeddedservice_bootstrap.utilAPI) {
-                console.error("Embedded Messaging não carregado ainda.");
-                if (balao) balao.classList.remove("hidden");
-                return;
-            }
-    
-            embeddedservice_bootstrap.utilAPI.launchChat()
-                .catch((erro) => {
-                    console.error("Erro ao iniciar chat:", erro);
-                    if (balao) balao.classList.remove("hidden");
-                    alert("Não foi possível iniciar o chat no momento. Tente novamente mais tarde.");
-                });
-        }
+       
     </script>
     
     <script src="https://multilixo--dev.sandbox.my.site.com/ESWWebChatMultilixo1763089299698/assets/js/bootstrap.min.js" onload="initEmbeddedMessaging()"></script>
