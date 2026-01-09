@@ -5,14 +5,88 @@
   <title>Teste Bot de Serviço</title>
 </head>
 <body>
-  <h1>Teste do Bot</h1>
+  <style>
+        .embeddedMessagingConversationButton {
+            position: fixed !important;
+            left: -5000px !important;
+            top: -5000px !important;
+            opacity: 0 !important;
+        }
+        
+        .chat-launcher-custom {
+            position: fixed;
+            right: 32px;
+            bottom: 32px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 22px;
+            border-radius: 999px;
+            background:#663399;
+            color:#FFFFFF;
+            font-weight:600;
+            font-size:14px;
+            border:none;
+            cursor:pointer;
+            box-shadow:0 6px 16px rgba(0,0,0,.25);
+            transition:.2s;
+        }
+        
+        .chat-launcher-custom:hover {
+            transform: translateY(-1px);
+            box-shadow:0 8px 20px rgba(0,0,0,.35);
+        }
+        
+        .chat-launcher-icon {
+            color:#f49739;
+            font-size:16px;
+        }
+    </style>
 
-  <p>Bot integrado abaixo:</p>
+    <button class="chat-launcher-custom" onclick="iniciarChat()">
+        <span class="chat-launcher-icon">✦</span>
+        Atendimento  – Grupo Multilixo
+    </button>
 
-  <!-- Exemplo de iframe ou script do bot -->
-  <!-- SUBSTITUA pelo código do seu bot -->
-  <script>
-    console.log("Bot carregado");
-  </script>
+    <script type="text/javascript">
+        function initEmbeddedMessaging() {
+            try {
+                 embeddedservice_bootstrap.settings.language = "pt_BR";
+                embeddedservice_bootstrap.settings.displayHelpButton = false;
+                embeddedservice_bootstrap.settings.hideChatButtonOnLoad = true;
+                embeddedservice_bootstrap.settings.chatButtonPosition = "-50000px,-50000px";
+                embeddedservice_bootstrap.init(
+                    '00Dbe0000028Dq9',
+                    'WebChat_Multilixo',
+                    'https://multilixo--dev.sandbox.my.site.com/ESWWebChatMultilixo1763089299698',
+                    {
+                        scrt2URL: 'https://multilixo--dev.sandbox.my.salesforce-scrt.com'
+                    }
+                );
+            } catch (err) {
+                console.error(err);
+            }
+        }
+    
+        function iniciarChat() {
+            const balao = document.getElementById("chatBalloon");
+            if (balao) balao.classList.add("hidden");
+    
+            if (!window.embeddedservice_bootstrap || !embeddedservice_bootstrap.utilAPI) {
+                console.error("Embedded Messaging não carregado ainda.");
+                if (balao) balao.classList.remove("hidden");
+                return;
+            }
+    
+            embeddedservice_bootstrap.utilAPI.launchChat()
+                .catch((erro) => {
+                    console.error("Erro ao iniciar chat:", erro);
+                    if (balao) balao.classList.remove("hidden");
+                    alert("Não foi possível iniciar o chat no momento. Tente novamente mais tarde.");
+                });
+        }
+    </script>
+    
+    <script src="https://multilixo--dev.sandbox.my.site.com/ESWWebChatMultilixo1763089299698/assets/js/bootstrap.min.js" onload="initEmbeddedMessaging()"></script>
 </body>
 </html>
