@@ -48,6 +48,24 @@
         .embeddedMessagingConversationButton .isEventMessage {
             display: none !important;
         }
+
+        /* Ocultar mensagem de entrada do bot */
+        .embeddedMessagingConversationButton .messageContent .eventMessage,
+        .embeddedMessagingConversationButton .embeddedMessagingEventMessage {
+            display: none !important;
+        }
+
+        /* Ocultar apenas mensagens de participante entrando/saindo */
+        .embeddedMessagingConversationButton .messageContent .eventMessage[data-type="ParticipantChanged"],
+        .embeddedMessagingConversationButton .embeddedMessagingEventMessage {
+            display: none !important;
+        }
+
+        /* Ocultar mensagem de sistema do chat */
+        .embeddedMessagingConversationButton .messageContent .eventMessage,
+        .embeddedMessagingConversationButton .embeddedMessagingEventMessage {
+            display: none !important;
+        }
     </style>
 
     <!-- Componente de botão de chat personalizado -->
